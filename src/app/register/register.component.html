@@ -1,0 +1,88 @@
+<main class="my-form">
+    <div class="cotainer">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-sm-12">
+                <div class="card">
+                    <div class="card-header">Регистрация</div>
+                    <div class="card-body">
+                        <form [formGroup]="registerForm" autocomplete="off" novalidate
+                            (ngSubmit)="registerUser(registerForm.value)">
+                            <div class="form-group row">
+                                <label for="firstName" class="col-md-4 col-form-label text-md-right">Имя*</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="firstName" class="form-control" formControlName="firstName">
+                                    <em *ngIf="validateControl('firstName') && hasError('firstName', 'required')">Укажите Имя!</em>
+                                    <em *ngIf="validateControl('firstName') && hasError('firstName', 'maxlength')">Имя не может быть более 20 символов!</em>
+
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastName" class="col-md-4 col-form-label text-md-right">Фамилия*</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="lastName" class="form-control" formControlName="lastName">
+                                    <em *ngIf="validateControl('lastName') && hasError('lastName', 'required')">Укажите Фамилию!</em>
+                                    <em *ngIf="validateControl('lastName') && hasError('lastName', 'maxlength')">Фамилию не может быть более 20 символов!</em>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="middleName" class="col-md-4 col-form-label text-md-right">Отчество</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="middleName" class="form-control"
+                                        formControlName="middleName">
+                                        <em *ngIf="validateControl('middleName') && hasError('middleName', 'maxlength')">Отчество может быть более 20 символов!</em>
+                                    </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail*</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="email" class="form-control" formControlName="email">
+                                    <em *ngIf="validateControl('email') && hasError('email', 'required')">Укажите Email!</em>
+                                    <em *ngIf="validateControl('email') && hasError('email', 'email')">Укажите правильный Email!</em>
+                                    <em *ngIf="validateControl('email') && hasError('email', 'maxlength')">Email не может быть более 300 символов!</em>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                    <label for="birth_date" class="col-md-4 col-form-label text-md-right">Дата рождения*</label>
+                                    <div class="col-md-6">
+                                        <input type="date" id="birth_date" class="form-control" formControlName="birthDate">
+                                        <em *ngIf="validateControl('birthDate') && hasError('birthDate', 'required')">Укажите Дату рождения!</em>
+                                        <em *ngIf="validateControl('birthDate') && hasError('birthDate', 'dateToLow')">Укажите Дату рождения после 1900 года!</em>
+                                        <em *ngIf="validateControl('birthDate') && hasError('birthDate', 'dateToHigh')">Укажите Дату рождения до 2015 года!</em>
+
+                                    </div>
+                            </div> 
+                            
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Пароль*</label>
+                                <div class="col-md-6">
+                                    <input type="password" id="password" class="form-control" formControlName="password">
+                                    <em *ngIf="validateControl('password') && hasError('password', 'minlength')">Пароль должен быть не менее 10 символов</em>
+                                    <em *ngIf="validateControl('password') && hasError('password', 'maxlength')">Пароль не может быть не менее 300 символов</em>
+
+                                </div>
+                        </div> 
+                        <div class="form-group row">
+                            <label for="passwordConfirmation" class="col-md-4 col-form-label text-md-right">Подтверждение пароля*</label>
+                            <div class="col-md-6">
+                                <input type="password" id="passwordConfirmation" class="form-control" formControlName="passwordConfirmation">
+                            </div>
+                    </div> 
+
+
+                            <div class="mb-3 row">
+                                <div class="col-md-1">
+                                    <button type="submit" class="btn btn-info"
+                                        [disabled]="!registerForm.valid">Зарегистрироваться</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
